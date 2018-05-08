@@ -1,0 +1,182 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="/SAPYL/SELF_CHECK_IN_SRV" xml:lang="de" sap:schema-version="1">
+            <EntityType Name="AdmSettings" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DummyUser"/>
+                </Key>
+                <Property Name="YardNo" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Yard-Nummer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CheckPoint" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Checkpunkt im Yard" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DummyUser" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Selbstregistrierung Dummy" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Languages" m:HasStream="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="YardNo"/>
+                    <PropertyRef Name="CheckPoint"/>
+                    <PropertyRef Name="MimeUrl"/>
+                </Key>
+                <Property Name="MimeType" Type="Edm.String" Nullable="false" MaxLength="128" sap:label="MIME-Typ" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="YardNo" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Yard-Nummer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CheckPoint" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Checkpunkt im Yard" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Land" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Sprache" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MimeUrl" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Textur-URL" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ButtonText" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="Bezeichnung" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Sequence" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Abfolgenummer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="DocumentIdentification" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Key"/>
+                </Key>
+                <Property Name="Wait" Type="Edm.Int32" Nullable="false" sap:label="Leerlaufzeit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Ländercode-Präfix" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Proceed" Type="Edm.Boolean" Nullable="false" sap:label="Fortfahren nä. Schr." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Scac" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="SCAC" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Key" Type="Edm.Guid" Nullable="false" sap:label="KnotenID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Sprache" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="YardNo" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Yard-Nummer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CheckPoint" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Checkpunkt im Yard" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Direction" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Slbstreg./-ausf Rcht" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DocumentValue" Type="Edm.String" Nullable="false" MaxLength="256" sap:label="Selbstregistrierung Referenzwert" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DriverType" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Fahrer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Carrier" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Frachtführer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LicPlate" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Kfz-Kennzeichen" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PhoneNumber" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Telefonnummer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Questions" Type="Edm.Boolean" Nullable="false" sap:label="Dokument mit Fragen" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="CarrierSH" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Partner"/>
+                </Key>
+                <Property Name="McCity1" Type="Edm.String" Nullable="false" MaxLength="25" sap:label="Ort" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PostCode1" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Postleitzahl" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="McStreet" Type="Edm.String" Nullable="false" MaxLength="25" sap:label="Straße" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HouseNum1" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Hausnummer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="McCounty" Type="Edm.String" Nullable="false" MaxLength="25" sap:label="County" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="McTownship" Type="Edm.String" Nullable="false" MaxLength="25" sap:label="Stadt" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Land" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="McName1" Type="Edm.String" Nullable="false" MaxLength="35" sap:label="Name 1/Nachname" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="McName2" Type="Edm.String" Nullable="false" MaxLength="35" sap:label="Name2/Vorname" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BuSort1" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Suchbegriff 1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BuSort2" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Suchbegriff 2" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Partner" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Geschäftspartner" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="CountryCodeSH" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Spras"/>
+                </Key>
+                <Property Name="Land1" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Ländercode-Präfix" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Spras" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Sprache" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Landx" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Questions" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CheckId"/>
+                </Key>
+                <Property Name="Key" Type="Edm.Guid" Nullable="false" sap:label="KnotenID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Sprache" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CheckId" Type="Edm.String" Nullable="false" MaxLength="70" sap:label="Prüf-ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Sequence" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Abfolgenummer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Question" Type="Edm.String" Nullable="false" MaxLength="80" sap:label="Frage" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Answer" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Prüfergebnis" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AnswerNote" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Fragenotiz" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="CountrySH" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Spras"/>
+                </Key>
+                <Property Name="Land1" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Land" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Spras" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Sprache" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Landx" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="DriverSH" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Partner"/>
+                </Key>
+                <Property Name="Partner" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Geschäftspartner" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TelNumber" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Telefon" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="McName1" Type="Edm.String" Nullable="false" MaxLength="25" sap:label="Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name2" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Name 2" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PostCode1" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Postleitzahl" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="McCity1" Type="Edm.String" Nullable="false" MaxLength="25" sap:label="Ort" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="McStreet" Type="Edm.String" Nullable="false" MaxLength="25" sap:label="Straße" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Land" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Sort1" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Suchbegriff 1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Sort2" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Suchbegriff 2" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ValidFrom" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Von" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ValidTo" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Bis" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="DocumentReference" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="YardNo"/>
+                    <PropertyRef Name="CheckPoint"/>
+                </Key>
+                <Property Name="YardNo" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Yard-Nummer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Sprache" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CheckPoint" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Checkpunkt im Yard" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RefType" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Bezugstyp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Sequence" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Abfolgenummer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ButtonText" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Drucktastentext für DocI" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ItemDetails" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Key"/>
+                </Key>
+                <Property Name="Key" Type="Edm.Guid" Nullable="false" sap:label="KnotenID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Sprache" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ItemNo" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Positionsnummer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="YardNo" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Yard-Nummer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TuNumber" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="TE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ItemNoParent" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Positionsnummer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LabelText" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Bezeich. Pos.details" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Identification" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Identifikation" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LicPlateCountry" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Registrierungsland" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="InfoText" Type="Edm.String" Nullable="false" sap:label="Detail Infotextpos" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityContainer Name="/SAPYL/SELF_CHECK_IN_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="AdmSettingsSet" EntityType="/SAPYL/SELF_CHECK_IN_SRV.AdmSettings" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="LanguagesSet" EntityType="/SAPYL/SELF_CHECK_IN_SRV.Languages" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="DocumentIdentificationSet" EntityType="/SAPYL/SELF_CHECK_IN_SRV.DocumentIdentification" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="CarrierSHSet" EntityType="/SAPYL/SELF_CHECK_IN_SRV.CarrierSH" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="CountryCodeSHSet" EntityType="/SAPYL/SELF_CHECK_IN_SRV.CountryCodeSH" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="QuestionsSet" EntityType="/SAPYL/SELF_CHECK_IN_SRV.Questions" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="CountrySHSet" EntityType="/SAPYL/SELF_CHECK_IN_SRV.CountrySH" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="DriverSHSet" EntityType="/SAPYL/SELF_CHECK_IN_SRV.DriverSH" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="DocumentReferenceSet" EntityType="/SAPYL/SELF_CHECK_IN_SRV.DocumentReference" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ItemDetailsSet" EntityType="/SAPYL/SELF_CHECK_IN_SRV.ItemDetails" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <FunctionImport Name="SubmitCheckIn" ReturnType="/SAPYL/SELF_CHECK_IN_SRV.DocumentIdentification" EntitySet="DocumentIdentificationSet" m:HttpMethod="POST" sap:label="Übermitteln" sap:action-for="/SAPYL/SELF_CHECK_IN_SRV.DocumentIdentification">
+                    <Parameter Name="Key" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="Language" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="Country" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="DriverType" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="Carrier" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="LicPlate" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="PhoneNumber" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="Answers" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="Scac" Type="Edm.String" Mode="In"/>
+                </FunctionImport>
+                <FunctionImport Name="ValidateValues" ReturnType="/SAPYL/SELF_CHECK_IN_SRV.DocumentIdentification" EntitySet="DocumentIdentificationSet" m:HttpMethod="GET" sap:label="Validieren" sap:action-for="/SAPYL/SELF_CHECK_IN_SRV.DocumentIdentification">
+                    <Parameter Name="Scac" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="DriverType" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="Carrier" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="LicPlate" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="PhoneNumber" Type="Edm.String" Mode="In"/>
+                </FunctionImport>
+                <FunctionImport Name="ValidateItem" ReturnType="/SAPYL/SELF_CHECK_IN_SRV.ItemDetails" EntitySet="ItemDetailsSet" m:HttpMethod="GET" sap:label="Position validieren" sap:action-for="/SAPYL/SELF_CHECK_IN_SRV.ItemDetails">
+                    <Parameter Name="LicPlateCountry" Type="Edm.String" Mode="In" MaxLength="3"/>
+                    <Parameter Name="TuNumber" Type="Edm.String" Mode="In" MaxLength="20"/>
+                    <Parameter Name="Key" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="YardNo" Type="Edm.String" Mode="In" MaxLength="4"/>
+                </FunctionImport>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sapyl/SELF_CHECK_IN_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sapyl/SELF_CHECK_IN_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

@@ -1,0 +1,62 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:l="sap.ui.layout" xmlns:cam="YL_SCI_EXYardLogistics.camera" controllerName="YL_SCI_EXYardLogistics.controller.Camera">
+	<App>
+		<pages>
+			<Page title="Schrankenkontrolle">
+				<content>
+					<FlexBox id="__box0" width="100%" alignItems="Center" direction="Column">
+						<FlexBox id="__box1" alignItems="Center">
+							<DisplayListItem label="Gate: " value="Tor 1"/>
+							<ObjectListItem xmlns="sap.m" title="Schrankenstatus: " icon="sap-icon://locked"/>
+						</FlexBox>
+						<items></items>
+					</FlexBox>
+					<FlexBox id="__box2" alignItems="Center" width="auto">
+							<!-- Kamera -->
+						<cam:Camera id="idCamera" width="500" height="350" snapshot="onSnapshot" singleShotMode="false"/>
+						<Table noDataText="Liste der Kennzeichen" id="__table1" items="{xxx>/}">
+							<ColumnListItem>
+								<cells>
+									<Text text="{oYlSelfCheckInData>Kennzeichen}"/>
+									<!-- vorläufige Namen für Databinding -->
+									<Text text="{oYlSelfCheckInData>FahrerName}"/>
+									<!-- vorläufige Namen für Databinding -->
+								</cells>
+							</ColumnListItem>
+							<columns>
+								<Column id="_column2">
+									<header>
+										<Label text="Fahrername"/>
+									</header>
+								</Column>
+								<Column id="_column1">
+									<header>
+										<Label text="Kennzeichen"/>
+									</header>
+								</Column>
+							</columns>
+						</Table>
+					</FlexBox>
+					<FlexBox>
+						<!-- Anzeige für die Aufgenommenen Bilder-->
+						<List headerText="Photos" growing="false" items="{ path: '/photos' }" noDataText="{i18n>nophotos}">
+							<CustomListItem>
+								<Image src="{src}" densityAware="false" height="100px"></Image>
+							</CustomListItem>
+						</List>
+					</FlexBox>
+				</content>
+				<footer>
+					<OverflowToolbar id="toolbar">
+						<Button text="Logout" type="Emphasized" id="__button01" press="onLogout"/>
+						<ToolbarSpacer/>
+						<Button text="Schranke öffnen/schließen" type="Emphasized" id="__button03" press="onBarrierMan"/>
+						<content>
+							<Button xmlns="sap.m" text="Daten Anzeigen" type="Emphasized" id="__button02" press="onShowData"/>
+						</content>
+					</OverflowToolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

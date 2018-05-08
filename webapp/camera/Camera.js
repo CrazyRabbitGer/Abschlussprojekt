@@ -82,6 +82,7 @@ sap.ui.define([
 				this._displayingVideo = false; // Is the control displaying video at the moment?
 			},
 
+
 			/**
 			 * Handler for when the user clicks the video preview.
 			 * Fires the Snapshot event with the image inside.

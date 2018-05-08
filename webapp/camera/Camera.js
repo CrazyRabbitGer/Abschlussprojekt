@@ -82,7 +82,6 @@ sap.ui.define([
 				this._displayingVideo = false; // Is the control displaying video at the moment?
 			},
 
-
 			/**
 			 * Handler for when the user clicks the video preview.
 			 * Fires the Snapshot event with the image inside.
@@ -99,22 +98,6 @@ sap.ui.define([
 					});
 				}
 			},
-
-		onSnapshot: function(oEvent) {
-			// The image is inside oEvent, on the image parameter,
-			// let's grab it.
-			var oModel = this.getView().getModel();
-			var aPhotos = oModel.getProperty("/photos");
-			aPhotos.push({
-				src: oEvent.getParameter("image")
-			});
-			oModel.setProperty("/photos", aPhotos);
-			oModel.refresh(true);
-			// Do something with it!
-			// As you see in the demo, you can attach it directly to a src of an Image. 
-			// Because it is already a text string it is also easy to POST to a server inside a json message. 
-		},
-			
 
 			/**
 			 * Takes a screenshot of the video element and returns its

@@ -42,6 +42,7 @@
 						<List headerText="Photos" growing="false" items="{ path: '/photos' }" noDataText="{i18n>nophotos}">
 							<CustomListItem>
 								<Image src="{src}" densityAware="false" height="100px"></Image>
+								<Text text="{licensePlate}"/>
 							</CustomListItem>
 						</List>
 					</FlexBox>

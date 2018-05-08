@@ -4,9 +4,8 @@ sap.ui.define([
 	'sap/m/Dialog',
 	'sap/m/MessageToast',
 	'sap/m/Text',
-	'sap/ui/core/Control',
 	"sap/ui/model/json/JSONModel"
-], function(BaseController, Button, Dialog, MessageToast, Text ) {
+], function(BaseController, Button, Dialog, MessageToast, Text, JSONModel) {
 	"use strict";
 
 	return BaseController.extend("YL_SCI_EXYardLogistics.controller.Camera", {
@@ -16,8 +15,11 @@ sap.ui.define([
 		 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 		 * @memberOf YL_SCI_EXYardLogistics.view.Camera
 		 */
+		openALPRSecretKey: "sk_91fa84e8508f1bcc51deeda8",
 		onInit: function() {
-					
+			this.getView().setModel(new JSONModel({
+				photos: []
+			}));
 		},
 
 		onLogout: function() {
@@ -48,6 +50,52 @@ sap.ui.define([
 			});
 
 			dialog.open();
+		},
+
+		onSnapshot: function(oEvent) {
+			// The image is inside oEvent on the image parameter
+			var oModel = this.getView().getModel();
+			var that = this;
+			// build a fake network request to the base64 image to use
+			// the fetch API to create the blob
+			fetch(oEvent.getParameter("image")).then(function(res) {
+				return res.blob();
+			}).then(function(blob) {
+				var aPhotos = oModel.getProperty("/photos");
+				var blobSource = URL.createObjectURL(blob);
+				aPhotos.push({
+					src: blobSource
+				});
+				oModel.setProperty("/photos", aPhotos);
+
+				var formData = new FormData();
+				/* eslint-disable sap-no-dom-insertion */
+				formData.append("image", blob);
+				/* eslint-enable sap-no-dom-insertion */
+				/* eslint-disable sap-no-hardcoded-url */
+				fetch("https://api.openalpr.com/v2/recognize?country=eu&secret_key=" + that.openALPRSecretKey, {
+					method: "POST",
+					body: formData
+				}).then(function(resp) {
+					return resp.ok ? resp.json() : Promise.Reject(resp.text());
+				}).then(function(resp) {
+					aPhotos = oModel.getProperty("/photos");
+					for (var i = 0; i < aPhotos.length; i++) {
+						if (aPhotos[i].src === blobSource) {
+							if (resp.results.length > 0) {
+								aPhotos[i].licensePlate = resp.results[0].plate;
+							} else {
+								aPhotos[i].licensePlate = "No license plate recognized!";
+							}
+						}
+					}
+					oModel.setProperty("/photos", aPhotos);
+				});
+				/* eslint-enable sap-no-hardcoded-url */
+			});
+			// Do something with it!
+			// As you see in the demo, you can attach it directly to a src of an Image. 
+			// Because it is already a text string it is also easy to POST to a server inside a json message. 
 		},
 
 		onBarrierMan: function() {

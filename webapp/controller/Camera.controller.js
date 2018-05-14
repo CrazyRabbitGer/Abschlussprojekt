@@ -93,9 +93,6 @@ sap.ui.define([
 				});
 				/* eslint-enable sap-no-hardcoded-url */
 			});
-			// Do something with it!
-			// As you see in the demo, you can attach it directly to a src of an Image. 
-			// Because it is already a text string it is also easy to POST to a server inside a json message. 
 		},
 
 		onBarrierMan: function() {

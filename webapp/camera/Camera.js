@@ -115,23 +115,14 @@ sap.ui.define([
 				return oImageData;
 			},
 
-			/**
-			 *
-			 */
 			_getCanvas: function() {
 				return jQuery("canvas", jQuery("#" + this.getId())).get(0);
 			},
 
-			/**
-			 *
-			 */
 			_getVideo: function() {
 				return jQuery("video", jQuery("#" + this.getId())).get(0);
 			},
 
-			/**
-			 *
-			 */
 			stopCamera: function() {
 				this._displayingVideo = false;
 				if (this._stream) {
@@ -141,9 +132,6 @@ sap.ui.define([
 				}
 			},
 
-			/**
-			 *
-			 */
 			onAfterRendering: function() {
 				var that = this;
 				var oVideo = this._getVideo();

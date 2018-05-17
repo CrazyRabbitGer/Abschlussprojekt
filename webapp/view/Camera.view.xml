@@ -4,17 +4,18 @@
 		<pages>
 			<Page title="Schrankenkontrolle">
 				<content>
-					<FlexBox id="__box0" width="100%" alignItems="Center" direction="Column">
-						<FlexBox id="__box1" alignItems="Center">
+					<FlexBox width="100%" height="85px" alignItems="Center" direction="Column">
+						<FlexBox  alignItems="Center">
 							<DisplayListItem label="Gate: " value="Tor 1"/>
-							<ObjectListItem xmlns="sap.m" title="Schrankenstatus: " icon="sap-icon://locked"/>
+							<ObjectListItem xmlns="sap.m" title="Schrankenstatus: " icon="sap-icon://locked" visible="{= ! ${/bumperOpened} }"/>
+							<ObjectListItem xmlns="sap.m" title="Schrankenstatus: " icon="sap-icon://unlocked" visible="{= ${/bumperOpened} }"/>
 						</FlexBox>
 						<items></items>
 					</FlexBox>
-					<FlexBox id="__box2" alignItems="Center" width="auto">
+					<FlexBox  alignItems="Center" width="auto">
 							<!-- Kamera -->
 						<cam:Camera id="idCamera" width="500" height="350" snapshot="onSnapshot" singleShotMode="false"/>
-						<Table noDataText="Liste der Kennzeichen" id="__table1" items="{xxx>/}">
+						<Table noDataText="Liste der Kennzeichen"  items="{xxx>/}">
 							<ColumnListItem>
 								<cells>
 									<Text text="{oYlSelfCheckInData>Kennzeichen}"/>
@@ -24,12 +25,12 @@
 								</cells>
 							</ColumnListItem>
 							<columns>
-								<Column id="_column2">
+								<Column>
 									<header>
 										<Label text="Fahrername"/>
 									</header>
 								</Column>
-								<Column id="_column1">
+								<Column >
 									<header>
 										<Label text="Kennzeichen"/>
 									</header>
@@ -48,12 +49,12 @@
 					</FlexBox>
 				</content>
 				<footer>
-					<OverflowToolbar id="toolbar">
-						<Button text="Logout" type="Emphasized" id="__button01" press="onLogout"/>
+					<OverflowToolbar>
+						<Button text="Logout" type="Emphasized"  press="onLogout"/>
 						<ToolbarSpacer/>
-						<Button text="Schranke öffnen/schließen" type="Emphasized" id="__button03" press="onBarrierMan"/>
+						<Button text="Schranke öffnen/schließen" type="Emphasized" press="onBarrierMan"/>
 						<content>
-							<Button xmlns="sap.m" text="Daten Anzeigen" type="Emphasized" id="__button02" press="onShowData"/>
+							<Button xmlns="sap.m" text="Daten Anzeigen" type="Emphasized"  press="onShowData"/>
 						</content>
 					</OverflowToolbar>
 				</footer>

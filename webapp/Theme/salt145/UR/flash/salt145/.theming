@@ -1,0 +1,31 @@
+{
+	"mVersionDependency": {
+		"UR.flash.sap_belize": "10.30.7.301056.0",
+		"UR.flash": "10.30.7.301056.0",
+		"UR": "10.30.7.301056.0"
+	},
+	"sEntity": "Theme",
+	"sId": "salt145",
+	"sLabel": "SALT Theme SapUi5 Version 1.45 (145)",
+	"oExtends": "UR.flash.sap_belize",
+	"aBuildFiles": [
+		"standards",
+		"standards_cozy",
+		"standards_condensed",
+		"standards_legacy"
+	],
+	"aFiles": [
+		"base",
+		"standards",
+		"standards_cozy",
+		"standards_condensed",
+		"standards_legacy",
+		"custom"
+	],
+	"aBundled": [
+		"salt145--Contrast"
+	],
+	"sTextDirections": "LTR",
+	"sType": "STANDARD",
+	"sThemability": "PUBLIC"
+}

@@ -20,7 +20,7 @@
 						<items>
 							<Label text="Username" labelFor="UsernameInput"/>
 							<Input xmlns="sap.m" id="UsernameInput" type="Text" placeholder="Enter Username" fieldWidth="100%"/>
-							<Label text="Password" labelFor="PaswordInput"/>
+							<Label text="Password" labelFor="PasswordInput"/>
 							<Input id="PasswordInput" type="Password" placeholder="Enter password" required="true"/>
 						</items>
 					</FlexBox>

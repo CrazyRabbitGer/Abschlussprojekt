@@ -1,0 +1,39 @@
+{
+	"mVersionDependency": {
+		"Base.baseLib.sap_belize_plus": "11.0.16",
+		"Base.baseLib": "11.0.16",
+		"Base": "11.0.16"
+	},
+	"sEntity": "Theme",
+	"sId": "salt145--Contrast",
+	"oExtends": "Base.baseLib.sap_belize_plus",
+	"aFiles": [
+		"base",
+		"preview",
+		"custom"
+	],
+	"aBundled": [
+		"salt145"
+	],
+	"sBuildOptions": "SKIP",
+	"sType": "ABSTRACT",
+	"sThemability": "PRIVATE",
+	"mData": {
+		"mThemeMasterState": {
+			"mSourceInfo": {
+				"sCreated": "2018-05-17T08:40:13.968Z",
+				"sLastModified": "2018-05-17T08:40:58.006Z",
+				"aVersionHistory": [
+					{
+						"sDate": "2018-05-17T08:40:13.968Z",
+						"mVersion": {
+							"Base": "11.0.16",
+							"UR": "10.30.7.301056.0",
+							"UI5": "1.54.5"
+						}
+					}
+				]
+			}
+		}
+	}
+}

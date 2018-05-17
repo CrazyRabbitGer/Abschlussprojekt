@@ -1,0 +1,48 @@
+{
+	"mVersionDependency": {
+		"Base.baseLib.sap_belize": "11.0.16",
+		"Base.baseLib": "11.0.16",
+		"Base": "11.0.16"
+	},
+	"sEntity": "Theme",
+	"sId": "salt145",
+	"sLabel": "SALT Theme SapUi5 Version 1.45 (145)",
+	"oExtends": "Base.baseLib.sap_belize",
+	"aFiles": [
+		"base",
+		"preview",
+		"custom"
+	],
+	"aBundled": [
+		"salt145--Contrast"
+	],
+	"sTextDirections": "LTR",
+	"sType": "STANDARD",
+	"sThemability": "PUBLIC",
+	"mData": {
+		"mThemeMasterState": {
+			"mSourceInfo": {
+				"sCreated": "2018-05-17T08:40:13.968Z",
+				"sLastModified": "2018-05-17T08:40:58.006Z",
+				"aVersionHistory": [
+					{
+						"sDate": "2018-05-17T08:40:13.968Z",
+						"mVersion": {
+							"Base": "11.0.16",
+							"UR": "10.30.7.301056.0",
+							"UI5": "1.54.5"
+						}
+					}
+				]
+			},
+			"mBuildInfo": {
+				"sLastBuilt": "2018-05-17T08:41:19.596Z",
+				"mVersion": {
+					"Base": "11.0.16",
+					"UR": "10.30.7.301056.0",
+					"UI5": "1.54.5"
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"mVersionDependency": {
+		"UI5.sap/rules/ui.sap_belize": "1.54.7",
+		"UI5.sap/rules/ui": "1.54.7",
+		"UI5": "1.54.5"
+	},
+	"sEntity": "Theme",
+	"sId": "salt145",
+	"sLabel": "SALT Theme SapUi5 Version 1.45 (145)",
+	"oExtends": "UI5.sap/rules/ui.sap_belize",
+	"aBundled": [
+		"salt145--Contrast"
+	],
+	"sTextDirections": "LTR",
+	"sType": "STANDARD",
+	"sThemability": "PUBLIC"
+}

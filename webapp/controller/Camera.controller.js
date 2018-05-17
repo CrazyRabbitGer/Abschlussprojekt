@@ -18,7 +18,8 @@ sap.ui.define([
 		openALPRSecretKey: "sk_91fa84e8508f1bcc51deeda8",
 		onInit: function() {
 			this.getView().setModel(new JSONModel({
-				photos: []
+				photos: [],
+				bumperOpened: false
 			}));
 		},
 
@@ -95,8 +96,10 @@ sap.ui.define([
 			});
 		},
 
-		onBarrierMan: function() {
-
+		onBarrierMan: function(oEvent) {
+			//Funktion für Button zum manuellem öffnen der Schranke
+			var bumperState = this.getModel().getProperty("/bumperOpened");
+			this.getModel().setProperty("/bumperOpened", !bumperState);
 		},
 
 		onShowData: function() {

@@ -4,8 +4,8 @@
 		<pages>
 			<Page title="Schrankenkontrolle">
 				<content>
-					<FlexBox width="100%" height="85px" alignItems="Center" direction="Column">
-						<FlexBox  alignItems="Center">
+					<FlexBox width="100%" height="85px" alignItems="Center" direction="Column" alignContent="SpaceBetween">
+						<FlexBox  alignItems="Center" alignContent="SpaceAround">
 							<DisplayListItem label="Gate: " value="Tor 1"/>
 							<ObjectListItem xmlns="sap.m" title="Schrankenstatus: " icon="sap-icon://locked" visible="{= ! ${/bumperOpened} }"/>
 							<ObjectListItem xmlns="sap.m" title="Schrankenstatus: " icon="sap-icon://unlocked" visible="{= ${/bumperOpened} }"/>
@@ -14,7 +14,7 @@
 					</FlexBox>
 					<FlexBox  alignItems="Center" width="auto">
 							<!-- Kamera -->
-						<cam:Camera id="idCamera" width="500" height="350" snapshot="onSnapshot" singleShotMode="false"/>
+						<cam:Camera id="idCamera" width="570" height="360" snapshot="onSnapshot" singleShotMode="false"/>
 						<Table noDataText="Liste der Kennzeichen"  items="{xxx>/}">
 							<ColumnListItem>
 								<cells>

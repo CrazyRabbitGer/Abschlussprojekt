@@ -2,3 +2,7 @@
 .sapMShellGlobalOuterBackground {
     background-size: contain;
 }
+.sapUiSizeCompact .sapMBtn {
+    height: 0rem;
+    padding: 0.4rem 0;
+}

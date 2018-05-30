@@ -19,9 +19,7 @@
 							<ColumnListItem>
 								<cells>
 									<Text text="{self-check-in-srv>LicPlate}"/>
-									<!-- vorläufige Namen für Databinding -->
 									<Text text="{self-check-in-srv>Driver}"/>
-									<!-- vorläufige Namen für Databinding -->
 								</cells>
 							</ColumnListItem>
 							<columns>

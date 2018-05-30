@@ -5,8 +5,10 @@ sap.ui.define([
 	'sap/m/MessageToast',
 	'sap/m/Text',
 	"sap/ui/model/json/JSONModel",
-	"sap/m/MessageBox"
-], function(BaseController, Button, Dialog, MessageToast, Text, JSONModel, MessageBox) {
+	"sap/m/MessageBox",
+	'sap/m/List',
+	'sap/m/StandardListItem'
+], function(BaseController, Button, Dialog, MessageToast, Text, JSONModel, MessageBox, List, StandardListItem  ) {
 	"use strict";
 
 	return BaseController.extend("YL_SCI_EXYardLogistics.controller.Camera", {
@@ -20,7 +22,8 @@ sap.ui.define([
 		onInit: function() {
 			this.getView().setModel(new JSONModel({
 				photos: [],
-				bumperOpened: false
+				bumperOpened: false,
+				drivers: [] 
 			}));
 		},
 
@@ -58,6 +61,7 @@ sap.ui.define([
 			// The image is inside oEvent on the image parameter
 			var oModel = this.getView().getModel();
 			var that = this;
+			
 			// build a fake network request to the base64 image to use
 			// the fetch API to create the blob
 			fetch(oEvent.getParameter("image")).then(function(res) {
@@ -96,15 +100,47 @@ sap.ui.define([
 				/* eslint-enable sap-no-hardcoded-url */
 			});
 		},
+	// odata read via js in default model /drivers
+	// 
+	// var data = model.getProperty("/drivers").filter(function(item) return item.LicPlate !== 'dein wert';})
+	// model.setProperty("/drivers", data)
 
 		onBarrierMan: function(oEvent) {
 			//Funktion für Button zum manuellem öffnen der Schranke
 			var bumperState = this.getModel().getProperty("/bumperOpened");
 			this.getModel().setProperty("/bumperOpened", !bumperState);
 		},
-
+		
+		fixedSizeDialog: null,
 		onShowData: function() {
+			if (!this.fixedSizeDialog) {
+				this.fixedSizeDialog = new Dialog({
+					title: 'Detailansicht',
+					contentWidth: "550px",
+					contentHeight: "300px",
+					content: new List({
+						items: {
+							path: 'self-check-in-srv>/YL_LICPL_DRIVERSet',
+							template: new StandardListItem({
+								title: "{self-check-in-srv>Driver}",
+								description: "{self-check-in-srv>LicPlate}",
+								info: "01234567"
+							})
+						}
+					}),
+					beginButton: new Button({
+						text: 'Close',
+						press: function () {
+							this.fixedSizeDialog.close();
+						}.bind(this)
+					})
+				});
 
+				//to get access to the global model
+				this.getView().addDependent(this.fixedSizeDialog);
+			}
+
+			this.fixedSizeDialog.open();
 		}
 
 		/**

@@ -4,7 +4,7 @@
 		<pages>
 			<Page title="{i18n>title}">
 				<content>
-					<FlexBox width="100%" id="__box0" justifyContent="Center">
+					<FlexBox width="100%" justifyContent="Center">
 						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Tor 1" subheader="Anmeldung an Tor 1" press="press">
 							<TileContent>
 								<ImageContent src="sap-icon://factory"/>
@@ -28,16 +28,14 @@
 					</FlexBox>
 					<FlexBox alignContent="SpaceAround" height="85px"/>
 					<FlexBox alignContent="Center" alignItems="Center" justifyContent="Center">
-						<FlexBox id="__box01" justifyContent="SpaceAround" direction="Column" alignContent="Center" alignItems="Center" height="auto">
+						<FlexBox justifyContent="SpaceAround" direction="Column" alignContent="Center" alignItems="Center" height="auto">
 							<items>
 								<Label text="Username" labelFor="UsernameInput"/>
 								<Input xmlns="sap.m" id="UsernameInput" type="Text" placeholder="Enter Username" fieldWidth="100%"/>
 								<Label text="Password" labelFor="PasswordInput"/>
 								<Input id="PasswordInput" type="Password" placeholder="Enter password" required="true"/>
+								<Button text="Login" icon="sap-icon://key" press="onLogin"/>
 							</items>
-						</FlexBox>
-						<FlexBox>
-							<Button text="Login" id="__button01" icon="sap-icon://key" press="onLogin"/>
 						</FlexBox>
 					</FlexBox>
 				</content>

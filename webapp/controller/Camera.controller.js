@@ -4,8 +4,9 @@ sap.ui.define([
 	'sap/m/Dialog',
 	'sap/m/MessageToast',
 	'sap/m/Text',
-	"sap/ui/model/json/JSONModel"
-], function(BaseController, Button, Dialog, MessageToast, Text, JSONModel) {
+	"sap/ui/model/json/JSONModel",
+	"sap/m/MessageBox"
+], function(BaseController, Button, Dialog, MessageToast, Text, JSONModel, MessageBox) {
 	"use strict";
 
 	return BaseController.extend("YL_SCI_EXYardLogistics.controller.Camera", {

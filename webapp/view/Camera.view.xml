@@ -15,24 +15,24 @@
 					<FlexBox  alignItems="Center" width="auto">
 							<!-- Kamera -->
 						<cam:Camera id="idCamera" width="570" height="360" snapshot="onSnapshot" singleShotMode="false"/>
-						<Table noDataText="Liste der Kennzeichen"  items="{xxx>/}">
+						<Table noDataText="Liste der Kennzeichen"  items="{path: 'self-check-in-srv>/YL_LICPL_DRIVERSet'}">
 							<ColumnListItem>
 								<cells>
-									<Text text="{oYlSelfCheckInData>Kennzeichen}"/>
+									<Text text="{self-check-in-srv>LicPlate}"/>
 									<!-- vorläufige Namen für Databinding -->
-									<Text text="{oYlSelfCheckInData>FahrerName}"/>
+									<Text text="{self-check-in-srv>Driver}"/>
 									<!-- vorläufige Namen für Databinding -->
 								</cells>
 							</ColumnListItem>
 							<columns>
 								<Column>
 									<header>
-										<Label text="Fahrername"/>
+										<Label text="Kennzeichen"/>
 									</header>
 								</Column>
 								<Column >
 									<header>
-										<Label text="Kennzeichen"/>
+										<Label text="Fahrername"/>
 									</header>
 								</Column>
 							</columns>

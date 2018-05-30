@@ -5,15 +5,6 @@
 			<Page title="{i18n>title}">
 				<content>
 					<FlexBox width="100%" id="__box0" justifyContent="Center">
-						<!-- GrundFlexBox -->
-						<!--tnt:NavigationList id="GateAuswahl" widht="Auto">
-							<tnt:NavigationListItem text="Tor Auswählen" icon="sap-icon://shipping-status">
-								<tnt:NavigationListItem text="Tor1"/>
-								<tnt:NavigationListItem text="Tor2"/>
-								<tnt:NavigationListItem text="Tor3"/>
-								<tnt:NavigationListItem text="Tor4"/>
-							</tnt:NavigationListItem>
-						</tnt:NavigationList-->
 						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Tor 1" subheader="Anmeldung an Tor 1" press="press">
 							<TileContent>
 								<ImageContent src="sap-icon://factory"/>

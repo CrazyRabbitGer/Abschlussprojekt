@@ -90,6 +90,16 @@
 				},
 				"dataSource": "Z_DHS_SELF_CHECK_IN_EXT_SRV_SRV",
 				"preload": true
+			},
+			"self-check-in-srv": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneTime",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "Z_DHS_SELF_CHECK_IN_EXT_SRV_SRV",
+				"preload": true
 			}
 		},
 		"routing": {

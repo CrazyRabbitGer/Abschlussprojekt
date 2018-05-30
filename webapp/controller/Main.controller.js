@@ -18,8 +18,11 @@ sap.ui.define([
 			var passwort = oView.byId("PasswordInput").getValue();
 			var oModel = this.getOwnerComponent().getModel();
 			var that = this;
-
-			oModel.read("/YL_CAMEX_LOGINSet('" + username + "')", {
+			var key = oModel.createKey("/YL_CAMEX_LOGINSet", {
+				Username: username
+			});
+			
+			oModel.read(key, {
 				success: function(oData) {
 					var Pass = oData.Password;
 					if (passwort === Pass) {

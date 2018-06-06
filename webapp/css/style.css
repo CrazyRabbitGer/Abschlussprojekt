@@ -1,12 +1,18 @@
 /* Enter your custom styles here */
+
+
+
 .sapMShellGlobalOuterBackground {
     background-size: contain;
 }
 .sapUiSizeCompact .sapMBtn {
-    height: 0rem;
+    height: 3rem;
     padding: 0.4rem 0;
 }
 
+.sapUiSizeCompact .sapMDLI {
+    height: 5rem;
+}
 
 .barrier-wrapper {
     width: 500px;
@@ -25,7 +31,7 @@
     top: 0;
     left: 28px;
     width: 100%;
-    background: repeating-linear-gradient(to right, red, #352C2C 20px, white 20px, white 40px);
+    background: repeating-linear-gradient(135deg, red, red 20px, white 20px, white 40px);
     height: 30px;
     border: solid #0A0A0A;
     transform-origin: 3px;

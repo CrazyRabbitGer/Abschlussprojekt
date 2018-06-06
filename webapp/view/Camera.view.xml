@@ -33,7 +33,7 @@
 									<l:GridData linebreakL="true" linebreakM="true" linebreakS="true"/>
 								</layoutData>
 							</List>
-							<Table noDataText="Liste der Kennzeichen" items="{path: 'self-check-in-srv>/YL_LICPL_DRIVERSet'}">
+							<Table headerText="Kennzeichenliste" noDataText="Liste der Kennzeichen" items="{path: 'self-check-in-srv>/YL_LICPL_DRIVERSet'}">
 								<ColumnListItem>
 									<cells>
 										<Text text="{self-check-in-srv>LicPlate}"/>
@@ -57,8 +57,8 @@
 					</l:Grid>
 				</content>
 				<footer>
-					<OverflowToolbar>
-						<Button text="Logout" type="Emphasized" press="onLogout"/>
+					<OverflowToolbar >
+						<Button text="Logout" type="Emphasized" press="onLogout" />
 						<ToolbarSpacer/>
 						<Button text="Schranke öffnen/schließen" type="Emphasized" press="onBarrierMan"/>
 						<content>

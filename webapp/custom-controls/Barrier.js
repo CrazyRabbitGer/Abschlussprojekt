@@ -3,7 +3,7 @@ sap.ui.define([
 
 ], function(Control) {
 	"use strict";
-	return Control.extend("salt.YardLogistics.custom-controls.barrier", {
+	return Control.extend("YL_SCI_EXYardLogistics.custom-controls.Barrier", {
 		metadata: {
 			properties: {
 				opened: {

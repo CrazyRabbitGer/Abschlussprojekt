@@ -1,58 +1,68 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
-	xmlns:l="sap.ui.layout" xmlns:cam="YL_SCI_EXYardLogistics.camera" controllerName="YL_SCI_EXYardLogistics.controller.Camera">
+	xmlns:l="sap.ui.layout" xmlns:cam="YL_SCI_EXYardLogistics.camera" xmlns:c="YL_SCI_EXYardLogistics.custom-controls"
+	controllerName="YL_SCI_EXYardLogistics.controller.Camera">
 	<App>
 		<pages>
 			<Page title="Schrankenkontrolle">
 				<content>
-					<FlexBox width="100%" height="85px" alignItems="Center" direction="Column" alignContent="SpaceBetween">
-						<FlexBox  alignItems="Center" alignContent="SpaceAround">
-							<DisplayListItem label="Gate: " value="Tor 1"/>
-							<ObjectListItem xmlns="sap.m" title="Schrankenstatus: " icon="sap-icon://locked" visible="{= ! ${/bumperOpened} }"/>
-							<ObjectListItem xmlns="sap.m" title="Schrankenstatus: " icon="sap-icon://unlocked" visible="{= ${/bumperOpened} }"/>
-						</FlexBox>
-						<items></items>
-					</FlexBox>
-					<FlexBox  alignItems="Center" width="auto">
-							<!-- Kamera -->
-						<cam:Camera id="idCamera" width="570" height="360" snapshot="onSnapshot" singleShotMode="false"/>
-						<Table noDataText="Liste der Kennzeichen"  items="{path: 'self-check-in-srv>/YL_LICPL_DRIVERSet'}">
-							<ColumnListItem>
-								<cells>
-									<Text text="{self-check-in-srv>LicPlate}"/>
-									<Text text="{self-check-in-srv>Driver}"/>
-								</cells>
-							</ColumnListItem>
-							<columns>
-								<Column>
-									<header>
-										<Label text="Kennzeichen"/>
-									</header>
-								</Column>
-								<Column >
-									<header>
-										<Label text="Fahrername"/>
-									</header>
-								</Column>
-							</columns>
-						</Table>
-					</FlexBox>
-					<FlexBox>
-						<!-- Anzeige für die Aufgenommenen Bilder-->
-						<List headerText="Photos" growing="false" items="{ path: '/photos' }" noDataText="{i18n>nophotos}">
-							<CustomListItem>
-								<Image src="{src}" densityAware="false" height="100px"></Image>
-								<Text text="{licensePlate}"/>
-							</CustomListItem>
-						</List>
-					</FlexBox>
+					<l:Grid defaultSpan="L6 M6 S12">
+						<l:content>
+							<VBox>
+								<DisplayListItem label="Gate: " value="Tor 1"/>
+							</VBox>
+							<VBox>
+								<ObjectListItem  title="Schrankenstatus: " icon="sap-icon://locked" visible="{= ! ${/bumperOpened} }"/>
+								<ObjectListItem title="Schrankenstatus: " icon="sap-icon://unlocked" visible="{= ${/bumperOpened} }"/>
+							</VBox>
+							<VBox>
+								<!-- Kamera -->
+								<cam:Camera width="570" height="360" snapshot="onSnapshot" singleShotMode="false"/>
+							</VBox>
+							<FlexBox height="360px" alignItems="End" justifyContent="Start">
+								<items>
+									<c:Barrier opened="{= ${/bumperOpened}}" />
+								</items>
+							</FlexBox>
+							<!-- Anzeige für die Aufgenommenen Bilder-->
+							<List headerText="Photos" growing="false" items="{ path: '/photos' }" noDataText="{i18n>nophotos}">
+								<CustomListItem>
+									<Image src="{src}" densityAware="false" height="100px"></Image>
+									<Text text="{licensePlate}"/>
+								</CustomListItem>
+								<layoutData>
+									<l:GridData linebreakL="true" linebreakM="true" linebreakS="true"/>
+								</layoutData>
+							</List>
+							<Table noDataText="Liste der Kennzeichen" items="{path: 'self-check-in-srv>/YL_LICPL_DRIVERSet'}">
+								<ColumnListItem>
+									<cells>
+										<Text text="{self-check-in-srv>LicPlate}"/>
+										<Text text="{self-check-in-srv>Driver}"/>
+									</cells>
+								</ColumnListItem>
+								<columns>
+									<Column>
+										<header>
+											<Label text="Kennzeichen"/>
+										</header>
+									</Column>
+									<Column >
+										<header>
+											<Label text="Fahrername"/>
+										</header>
+									</Column>
+								</columns>
+							</Table>
+						</l:content>
+					</l:Grid>
 				</content>
 				<footer>
 					<OverflowToolbar>
-						<Button text="Logout" type="Emphasized"  press="onLogout"/>
+						<Button text="Logout" type="Emphasized" press="onLogout"/>
 						<ToolbarSpacer/>
 						<Button text="Schranke öffnen/schließen" type="Emphasized" press="onBarrierMan"/>
 						<content>
-							<Button xmlns="sap.m" text="Daten Anzeigen" type="Emphasized"  press="onShowData"/>
+							<Button xmlns="sap.m" text="Daten Anzeigen" type="Emphasized" press="onShowData"/>
 						</content>
 					</OverflowToolbar>
 				</footer>

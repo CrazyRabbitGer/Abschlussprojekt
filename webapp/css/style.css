@@ -6,3 +6,54 @@
     height: 0rem;
     padding: 0.4rem 0;
 }
+
+
+.barrier-wrapper {
+    width: 500px;
+    height: 200px;
+    position: relative;
+}
+
+.barrier-wrapper>.barrier-holder {
+    height: 100%;
+    width: 10%;
+    background-color: #201D1D;
+}
+
+.barrier-wrapper>.barrier-bar {
+    position: absolute;
+    top: 0;
+    left: 28px;
+    width: 100%;
+    background: repeating-linear-gradient(to right, red, #352C2C 20px, white 20px, white 40px);
+    height: 30px;
+    border: solid #0A0A0A;
+    transform-origin: 3px;
+}
+
+.barrier-wrapper>.barrier-bar.open {
+    transform: rotate(-90deg);
+    animation: barrierOpen linear 4s;
+}
+
+.barrier-wrapper>.barrier-bar.close {
+    animation: barrierClose linear 4s;
+}
+
+@keyframes barrierOpen {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-90deg);
+    }
+}
+
+@keyframes barrierClose {
+    0% {
+        transform: rotate(-90deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
